@@ -20,7 +20,7 @@ app.get('/cancel', (req, res) => {
 });
 
 app.post("/create-checkout-session", async (req, res) => {
-  const { amount, plan } = req.body;
+  const { amount, planName } = req.body;
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -30,7 +30,7 @@ app.post("/create-checkout-session", async (req, res) => {
         price_data: {
           currency: "cad", // or "cad" based on your region
           product_data: {
-            name: `${plan} Subscription`
+            name: `${planName} Subscription`
           },
           unit_amount: amount,
         },
