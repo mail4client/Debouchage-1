@@ -92,6 +92,9 @@ app.post('/index', async (req, res) => {
       }
     });
 
+    console.log(process.env.MAIL_USER)  // Debugging line to check if the environment variable is set
+    console.log(process.env.MAIL_PASS)  // Debugging line to check if the environment variable is set
+
     const mailOptions = {
       from: email,
       to: process.env.MAIL_TO,
